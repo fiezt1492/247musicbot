@@ -27,7 +27,7 @@ client.on("ready", async () => {
     client.user.setPresence({
           activity: { name: "music 247", type: "LISTENING" },
           status: 'idle',
-        });
+    })
     
     for(const channelId of Channels){
         joinChannel(channelId);       
