@@ -48,11 +48,12 @@ client.on("ready", async () => {
             const player = createAudioPlayer()
             VoiceConnection.subscribe(player);
             player.play(resource);
-            player.on("music", () => {
+            player.on("idle", () => {
                 try{
                     player.stop()
                 } catch (e) { }
                 try{
+                    client.user.setPresence({activity: { name: "music 247", type: "LISTENING" }})
                     VoiceConnection.destroy()
                 } catch (e) { }
                 joinChannel(channel.id)
