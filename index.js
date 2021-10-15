@@ -11,17 +11,15 @@ const client = new Client({
     ]
 })
 
-const STATUS = {
-          activity: { name: "music 247", type: "LISTENING" },
-          status: 'idle',
-        }
-
 client.login(process.env.TOKEN);
 
 const Channels = ["898499379487465472"];
 
 client.on("ready", async () => {
-    client.user.setPresence(STATUS);
+    client.user.setPresence({
+          activity: { name: "music 247", type: "LISTENING" },
+          status: 'idle',
+    });
     for(const channelId of Channels){
         joinChannel(channelId);       
         await new Promise(res => setTimeout(() => res(2), 500))
@@ -53,7 +51,10 @@ client.on("ready", async () => {
             })
         }).catch(console.error)
         
-        client.user.setPresence(STATUS)
+        client.user.setPresence({
+          activity: { name: "music 247", type: "LISTENING" },
+          status: 'idle',
+        })
     }
 })
 
