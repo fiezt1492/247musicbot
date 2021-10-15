@@ -16,8 +16,9 @@ client.login(process.env.TOKEN);
 const Channels = ["898499379487465472"];
 
 client.on("ready", async () => {
-    client.user.setStatus("idle")
+   
     for(const channelId of Channels){
+        client.user.setStatus("idle")
         joinChannel(channelId);       
         await new Promise(res => setTimeout(() => res(2), 500))
     }
