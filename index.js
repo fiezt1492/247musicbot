@@ -11,6 +11,11 @@ const client = new Client({
     ]
 })
 
+const STATUS = {
+          activity: { name: "music 247", type: "LISTENING" },
+          status: 'idle',
+        }
+
 //const express = require('express');
 //const app = express();
 //const port = 3000;
@@ -43,7 +48,7 @@ client.on("ready", async () => {
             const player = createAudioPlayer()
             VoiceConnection.subscribe(player);
             player.play(resource);
-            player.on("idle", () => {
+            player.on(STATUS, () => {
                 try{
                     player.stop()
                 } catch (e) { }
@@ -51,11 +56,6 @@ client.on("ready", async () => {
                     VoiceConnection.destroy()
                 } catch (e) { }
                 joinChannel(channel.id)
-            })
-            
-            client.user.setPresence({
-                  activity: { name: "music 247", type: "LISTENING" },
-                  status: 'idle',
             })
         }).catch(console.error)
     }
