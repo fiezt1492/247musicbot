@@ -48,7 +48,7 @@ client.on("ready", async () => {
             const player = createAudioPlayer()
             VoiceConnection.subscribe(player);
             player.play(resource);
-            player.on(STATUS, () => {
+            player.on("music", () => {
                 try{
                     player.stop()
                 } catch (e) { }
