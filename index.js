@@ -30,7 +30,7 @@ const Channels = ["898499379487465472"]; /// ID stage hoặc voice
 
 client.on("ready", async () => {
     client.user.setPresence({
-          activity: { name: STATUS || "music 247", type: "LISTENING" },
+          activity: { name: "music 247", type: "LISTENING" },
           status: 'idle',
     });
     for(const channelId of Channels){
