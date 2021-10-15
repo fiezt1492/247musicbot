@@ -19,7 +19,7 @@ app.listen(port, () => console.log(`Example app listening at http://localhost:${
 //TOKEN vào đây
 client.login(process.env.TOKEN);
 
-const Channels = ["891433933781225474"]; /// ID stage hoặc voice 
+const Channels = ["898499379487465472"]; /// ID stage hoặc voice 
 
 client.on("ready", async () => {
     for(const channelId of Channels){
