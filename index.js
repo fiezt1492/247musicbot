@@ -1,5 +1,7 @@
 const { Client, Intents } = require("discord.js")
-const ytdl = require("ytdl-core"); 
+const ytdl = require("ytdl-core");
+const LINK = String(process.env.LINK)
+const CHANNEL_ID = String(process.env.CHANNEL)
 const { joinVoiceChannel, createAudioPlayer, createAudioResource } = require("@discordjs/voice");
 const client = new Client({
     shards: "auto", 
@@ -9,17 +11,17 @@ const client = new Client({
     ]
 })
 
-const express = require('express');
-const app = express();
-const port = 3000;
+//const express = require('express');
+//const app = express();
+//const port = 3000;
 
-app.get('/', (req, res) => res.send(`giờ thì vào đây dán link này  vào https://uptimerobot.com`));
+//app.get('/', (req, res) => res.send(`BOT IS RUNNING`));
 
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`)); 
+//app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`)); 
 //TOKEN vào đây
 client.login(process.env.TOKEN);
 
-const Channels = ["898499379487465472"]; /// ID stage hoặc voice 
+const Channels = [CHANNEL_ID]; /// ID stage hoặc voice 
 
 client.on("ready", async () => {
     for(const channelId of Channels){
@@ -34,7 +36,7 @@ client.on("ready", async () => {
                 guildId: channel.guild.id,
                 adapterCreator: channel.guild.voiceAdapterCreator
             });
-              const resource = createAudioResource(ytdl("https://youtu.be/DWcJFNfaw9c"), {
+              const resource = createAudioResource(ytdl(LINK), {
                 inlineVolume: true
             }); //youtube link
             resource.volume.setVolume(0.2);
