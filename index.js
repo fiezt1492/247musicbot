@@ -60,7 +60,10 @@ client.on("ready", async () => {
                 joinChannel(channel.id)
             })
         }).catch(console.error)
-        client.user.setActivity("music 247", { type: "LISTENING" })
+        client.user.setPresence({
+          activity: { name: "music 247", type: "LISTENING" },
+          status: 'idle',
+        });
     }
 })
 
