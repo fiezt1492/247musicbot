@@ -29,6 +29,7 @@ client.login(process.env.TOKEN);
 const Channels = ["898499379487465472"]; /// ID stage hoặc voice 
 
 client.on("ready", async () => {
+    client.user.setActivity("music 247", { type: "LISTENING" })
     for(const channelId of Channels){
         joinChannel(channelId);       
         await new Promise(res => setTimeout(() => res(2), 500))
@@ -48,17 +49,18 @@ client.on("ready", async () => {
             const player = createAudioPlayer()
             VoiceConnection.subscribe(player);
             player.play(resource);
+            
             player.on("idle", () => {
                 try{
                     player.stop()
                 } catch (e) { }
                 try{
-                    client.user.setActivity("music 247", { type: "LISTENING" })
                     VoiceConnection.destroy()
                 } catch (e) { }
                 joinChannel(channel.id)
             })
         }).catch(console.error)
+        client.user.setActivity("music 247", { type: "LISTENING" })
     }
 })
 
