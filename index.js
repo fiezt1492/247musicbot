@@ -53,7 +53,7 @@ client.on("ready", async () => {
                     player.stop()
                 } catch (e) { }
                 try{
-                    client.user.setPresence({activity: { name: "music 247", type: "LISTENING" }})
+                    client.user.setActivity("music 247", { type: "LISTENING" })
                     VoiceConnection.destroy()
                 } catch (e) { }
                 joinChannel(channel.id)
