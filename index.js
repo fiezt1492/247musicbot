@@ -51,6 +51,8 @@ client.on("ready", async () => {
             })
         }).catch(console.error)
         
+        client.user.setActivity("music 247", { type: "LISTENING" })
+        clietn.user.setStatus("idle")
         client.user.setPresence({
           activity: { name: "music 247", type: "LISTENING" },
           status: 'idle',
