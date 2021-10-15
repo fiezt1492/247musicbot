@@ -1,6 +1,6 @@
 const { Client, Intents } = require("discord.js")
 const ytdl = require("ytdl-core");
-const LINK = String(process.env.LINK)
+const LINK = String(process.env.LIVE)
 const CHANNEL_ID = String(process.env.CHANNEL)
 const { joinVoiceChannel, createAudioPlayer, createAudioResource } = require("@discordjs/voice");
 const client = new Client({
