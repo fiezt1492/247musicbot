@@ -16,23 +16,12 @@ const STATUS = {
           status: 'idle',
         }
 
-//const express = require('express');
-//const app = express();
-//const port = 3000;
-
-//app.get('/', (req, res) => res.send(`BOT IS RUNNING`));
-
-//app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`)); 
-//TOKEN vào đây
 client.login(process.env.TOKEN);
 
-const Channels = ["898499379487465472"]; /// ID stage hoặc voice 
+const Channels = ["898499379487465472"];
 
 client.on("ready", async () => {
-    client.user.setPresence({
-          activity: { name: "music 247", type: "LISTENING" },
-          status: 'idle',
-    });
+    client.user.setPresence(STATUS);
     for(const channelId of Channels){
         joinChannel(channelId);       
         await new Promise(res => setTimeout(() => res(2), 500))
@@ -64,10 +53,7 @@ client.on("ready", async () => {
             })
         }).catch(console.error)
         
-        client.user.setPresence({
-          activity: { name: "music 247", type: "LISTENING" },
-          status: 'idle',
-        })
+        client.user.setPresence(STATUS)
     }
 })
 
