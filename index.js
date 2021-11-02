@@ -63,5 +63,5 @@ client.on("voiceStateUpdate", async (oldState, newState) => {
     }
 })
 client.on("warn", console.log)
-client.on("debug", console.log)
+//client.on("debug", console.log)
 client.on("rateLimit", console.log)
